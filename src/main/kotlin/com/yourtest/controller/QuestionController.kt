@@ -2,7 +2,7 @@ package com.yourtest.controller
 
 import com.yourtest.entity.Question
 import com.yourtest.entity.QuestionDto
-import com.yourtest.service.IQuestionService
+import com.yourtest.service.QuestionService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/v1/question")
 class QuestionController {
     @Autowired
-    lateinit var questionService: IQuestionService
+    lateinit var questionService: QuestionService
 
     @GetMapping(value = "/all")
     fun getAll() = questionService.getAll()

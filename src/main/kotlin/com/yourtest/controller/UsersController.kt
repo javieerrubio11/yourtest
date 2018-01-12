@@ -1,8 +1,8 @@
 package com.yourtest.controller
 
-import com.yourtest.dao.IUsersDAO
+import com.yourtest.dao.UsersRepository
 import com.yourtest.entity.Users
-import com.yourtest.service.IUsersService
+import com.yourtest.service.UsersService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/v1/users")
-class UsersController (val usersDao: IUsersDAO) {
+class UsersController (val usersDao: UsersRepository) {
     @Autowired
-    lateinit var usersService : IUsersService
+    lateinit var usersService : UsersService
 
     @GetMapping(value = "/all")
     fun getUsers() = usersDao.findAll()

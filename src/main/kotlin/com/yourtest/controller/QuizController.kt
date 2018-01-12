@@ -2,7 +2,7 @@ package com.yourtest.controller
 
 import com.yourtest.entity.Quiz
 import com.yourtest.entity.QuizDto
-import com.yourtest.service.IQuizService
+import com.yourtest.service.QuizService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/v1/quiz")
 class QuizController {
     @Autowired
-    lateinit var quizService: IQuizService
+    lateinit var quizService: QuizService
 
     @GetMapping(value = "/all")
     fun getAll() = quizService.getAll()
