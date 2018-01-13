@@ -7,7 +7,7 @@ import javax.persistence.*
 class Question (
         @Id @GeneratedValue(strategy = GenerationType.AUTO)
         var id: Long = 0,
-        var nombre: String = "",
+        var name: String = "",
 
         @ManyToOne(fetch = FetchType.EAGER)
         @JoinColumn(name = "owner_id")
@@ -19,7 +19,7 @@ class Question (
 ) {
         constructor(questionDTO: QuestionDto) : this() {
                 this.id = questionDTO.id
-                this.nombre = questionDTO.nombre
+                this.name = questionDTO.name
                 this.owner = Users(questionDTO.owner)
                 this.quiz = Quiz(questionDTO.quiz)
         }
@@ -27,7 +27,7 @@ class Question (
 
 class QuestionDto(
         var id: Long = 0,
-        var nombre: String = "",
+        var name: String = "",
         var owner: Long = 0,
         var quiz: Long = 0
 )
