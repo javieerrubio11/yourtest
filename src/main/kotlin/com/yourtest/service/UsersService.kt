@@ -1,8 +1,9 @@
 package com.yourtest.service
 
-import com.yourtest.entity.Users
+import com.yourtest.entity.User
 
 interface UsersService {
-    fun getAllUsers() : List<Users>
-    fun insert(nombre : String) : Users
+    fun getAllUsers() : List<User>
+    fun insert(nombre : String) : User
+    fun getOne(id : Long) : User
 }

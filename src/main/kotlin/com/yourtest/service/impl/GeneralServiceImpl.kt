@@ -1,11 +1,12 @@
 package com.yourtest.service.impl
 
 import com.yourtest.service.GeneralService
+import org.springframework.beans.factory.annotation.Autowired
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
 
 class GeneralService () : GeneralService {
-    @PersistenceContext
+    @Autowired
     lateinit var entityManager: EntityManager
 
 

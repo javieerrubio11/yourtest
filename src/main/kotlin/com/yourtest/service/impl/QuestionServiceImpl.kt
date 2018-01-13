@@ -31,6 +31,6 @@ class QuestionServiceImpl : QuestionService {
     }
 
     override fun listByNombre(nombre : String): List<Question> {
-        return questionRepository.findByNombre(nombre)
+        return questionRepository.findByName(nombre)
     }
 }

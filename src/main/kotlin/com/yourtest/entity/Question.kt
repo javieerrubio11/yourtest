@@ -11,7 +11,7 @@ class Question (
 
         @ManyToOne(fetch = FetchType.EAGER)
         @JoinColumn(name = "owner_id")
-        var owner: Users? = null,
+        var owner: User? = null,
 
         @ManyToOne(fetch = FetchType.EAGER)
         @JoinColumn(name = "quiz_id")
@@ -20,7 +20,7 @@ class Question (
         constructor(questionDTO: QuestionDto) : this() {
                 this.id = questionDTO.id
                 this.name = questionDTO.name
-                this.owner = Users(questionDTO.owner)
+                this.owner = User(questionDTO.owner)
                 this.quiz = Quiz(questionDTO.quiz)
         }
 }

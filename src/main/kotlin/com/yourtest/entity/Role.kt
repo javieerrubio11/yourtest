@@ -4,7 +4,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name="app_role")
-class AppRole(
+class Role(
         @Id @GeneratedValue(strategy = GenerationType.AUTO)
         var id: Long = 0,
         var description: String = "",

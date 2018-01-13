@@ -1,6 +1,6 @@
 package com.yourtest.dao
 
-import com.yourtest.entity.Users
+import com.yourtest.entity.Role
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface UsersRepository : JpaRepository<Users, Long>
+interface RoleRepository : JpaRepository<Role, Long>
