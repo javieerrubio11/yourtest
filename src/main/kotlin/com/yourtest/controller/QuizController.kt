@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/v1/quiz")
+@CrossOrigin("*")
 class QuizController {
     @Autowired
     lateinit var quizService: QuizService

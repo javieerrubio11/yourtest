@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/v1/question")
+@CrossOrigin("*")
 class QuestionController {
     @Autowired
     lateinit var questionService: QuestionService
@@ -23,15 +24,20 @@ class QuestionController {
     }
 
     @PostMapping(value = "/insert")
-    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     fun insert(@RequestBody questionDto: QuestionDto) : List<Question> {
         questionService.insert(Question(questionDto))
         return questionService.getAll()
     }
 
+    @GetMapping(value = "/findByQuiz/{quizId}")
+    fun getByQuizId(@PathVariable quizId: Long) : List<Question> {
+        return questionService.listByQuizId(quizId)
+    }
+
     @GetMapping(value = "/find/{nombre}")
-    @PreAuthorize("hasAuthority('ADMIN_USER')")
+//    @PreAuthorize("hasAuthority('ADMIN_USER')")
+//    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     fun getByNombre(@PathVariable nombre: String) : List<Question> {
-        return questionService.listByNombre(nombre)
+        return questionService.listByName(nombre)
     }
 }

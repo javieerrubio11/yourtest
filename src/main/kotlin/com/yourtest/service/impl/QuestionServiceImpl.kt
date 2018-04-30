@@ -30,7 +30,11 @@ class QuestionServiceImpl : QuestionService {
         }
     }
 
-    override fun listByNombre(nombre : String): List<Question> {
-        return questionRepository.findByName(nombre)
+    override fun listByName(name : String): List<Question> {
+        return questionRepository.findByName(name)
+    }
+
+    override fun listByQuizId(quizId : Long) : List<Question> {
+        return questionRepository.findByQuiz_Id(quizId)
     }
 }
