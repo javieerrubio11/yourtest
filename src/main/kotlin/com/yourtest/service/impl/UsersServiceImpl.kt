@@ -31,4 +31,8 @@ class UsersServiceImpl : UsersService {
     override fun getOne(id: Long): User {
         return usersDao.getOne(id)
     }
+
+    override fun getByUsername(username : String): User {
+        return usersDao.findByUsername(username)
+    }
 }

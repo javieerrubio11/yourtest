@@ -6,4 +6,5 @@ interface UsersService {
     fun getAllUsers() : List<User>
     fun insert(nombre : String) : User
     fun getOne(id : Long) : User
+    fun getByUsername(username : String) : User
 }

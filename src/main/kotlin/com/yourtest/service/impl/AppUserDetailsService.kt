@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service;
 
 @Component
+@Service(value = "userService")
 class AppUserDetailsService : UserDetailsService {
     @Autowired
     lateinit var userRepository: UserRepository
