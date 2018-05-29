@@ -40,4 +40,15 @@ class QuestionController {
     fun getByNombre(@PathVariable nombre: String) : List<Question> {
         return questionService.listByName(nombre)
     }
+
+    @DeleteMapping(value = "/{id}")
+    fun delete(@PathVariable id: Long) : List<Question> {
+        try {
+            questionService.delete(id)
+            return questionService.getAll()
+        } catch (e : Exception) {
+            e.printStackTrace()
+            throw Exception(e.localizedMessage)
+        }
+    }
 }

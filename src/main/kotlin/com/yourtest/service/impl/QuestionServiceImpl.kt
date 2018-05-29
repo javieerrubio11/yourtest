@@ -21,6 +21,10 @@ class QuestionServiceImpl : QuestionService {
         return questionRepository.getOne(id)
     }
 
+    override fun delete(id: Long) {
+        questionRepository.delete(id)
+    }
+
     override fun insert(question: Question): Question {
         try {
             return questionRepository.save(question)
