@@ -43,9 +43,14 @@ class QuestionController {
 
     @DeleteMapping(value = "/{id}")
     fun delete(@PathVariable id: Long) : List<Question> {
+        var question = questionService.getOne(id);
+        var quizId: Long? = question?.quiz?.id;
         try {
             questionService.delete(id)
-            return questionService.getAll()
+            if(quizId != null)
+                return questionService.listByQuizId(quizId)
+            else
+                return emptyList();
         } catch (e : Exception) {
             e.printStackTrace()
             throw Exception(e.localizedMessage)
