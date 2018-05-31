@@ -11,22 +11,26 @@ import javax.transaction.Transactional
 @Transactional
 class QuizServiceImpl : QuizService {
     @Autowired
-    lateinit var quizDao : QuizRepository
+    lateinit var quizRepository : QuizRepository
 
     override fun getAll(): List<Quiz> {
-        return quizDao.findAll()
+        return quizRepository.findAll()
     }
 
     override fun getOne(id: Long): Quiz {
-        return quizDao.getOne(id)
+        return quizRepository.getOne(id)
     }
 
     override fun insert(quiz: Quiz): Quiz {
         try {
-            return quizDao.save(quiz)
+            return quizRepository.save(quiz)
         } catch (e : Exception) {
             e.printStackTrace()
             throw Exception(e.localizedMessage)
         }
+    }
+
+    override fun delete(id: Long) {
+        quizRepository.delete(id)
     }
 }

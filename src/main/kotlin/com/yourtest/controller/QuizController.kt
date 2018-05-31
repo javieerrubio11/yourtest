@@ -25,4 +25,16 @@ class QuizController {
     fun insert(@RequestBody quizDto : QuizDto) : Quiz {
         return quizService.insert(Quiz(quizDto))
     }
+
+    @DeleteMapping(value = "/{id}")
+    fun delete(@PathVariable id: Long) : List<Quiz> {
+
+        try {
+            quizService.delete(id)
+            return getAll()
+        } catch (e : Exception) {
+            e.printStackTrace()
+            throw Exception(e.localizedMessage)
+        }
+    }
 }
