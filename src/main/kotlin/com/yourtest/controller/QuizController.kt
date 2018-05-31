@@ -22,8 +22,7 @@ class QuizController {
     }
 
     @PostMapping(value = "/insert")
-    fun insert(@RequestBody quizDto : QuizDto) : List<Quiz> {
-        quizService.insert(Quiz(quizDto))
-        return quizService.getAll()
+    fun insert(@RequestBody quizDto : QuizDto) : Quiz {
+        return quizService.insert(Quiz(quizDto))
     }
 }
