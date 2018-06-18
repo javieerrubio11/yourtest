@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/v1/quiz")
 @CrossOrigin("*")
-class QuizController {
+class QuizController : BaseController() {
     @Autowired
     lateinit var quizService: QuizService
 
     @GetMapping(value = "/all")
-    fun getAll() = quizService.getAll()
+    fun getAll() : List<Quiz> {
+        val username = this.getUsername()
+        return quizService.findByOwnerUsername(username)
+    }
 
     @GetMapping(value = "/get/{id}")
     fun get(@PathVariable id: Long) : Quiz {

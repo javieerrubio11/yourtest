@@ -33,4 +33,8 @@ class QuizServiceImpl : QuizService {
     override fun delete(id: Long) {
         quizRepository.delete(id)
     }
+
+    override fun findByOwnerUsername(ownerUsername: String) : List<Quiz> {
+        return quizRepository.findByOwner_Username(ownerUsername)
+    }
 }

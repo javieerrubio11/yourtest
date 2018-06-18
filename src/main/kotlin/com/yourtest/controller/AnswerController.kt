@@ -1,5 +1,6 @@
 package com.yourtest.controller
 
+import com.yourtest.entity.User
 import com.yourtest.entity.Answer
 import com.yourtest.entity.AnswerDto
 import com.yourtest.entity.Question
@@ -7,6 +8,9 @@ import com.yourtest.service.AnswerService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
+import org.springframework.security.core.context.SecurityContextHolder
+
+
 
 @RestController
 @RequestMapping("/api/v1/answer")
@@ -16,7 +20,12 @@ class AnswerController {
     lateinit var answerService: AnswerService
 
     @GetMapping(value = "/all")
-    fun getAll() = answerService.getAll()
+    fun getAll() : List<Answer> {
+        val auth = SecurityContextHolder.getContext().authentication
+        val user = auth.principal as User
+        print(user.toString())
+        return answerService.getAll()
+    }
 
     @GetMapping(value = "/get/{id}")
     fun get(@PathVariable id: Long) : Answer {
